@@ -2,9 +2,9 @@ package com.jeriv.springboot.entities;
 
 import java.util.UUID;
 
-import org.hibernate.annotations.UuidGenerator;
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class Employee extends BaseEntity{
     
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID uuid;
     private String name;
 }

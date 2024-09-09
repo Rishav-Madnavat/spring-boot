@@ -44,6 +44,7 @@ public class EmployeeServiceImpl implements EmployeeService{
           updateEmployee(employeeDto, existingEmployee);
           return employeeDtoConversion(employeeRepository.save(existingEmployee));
         } catch (Exception e) {
+            log.error("Error in updating employee --> ",e);
             return null;
         }
     }
@@ -55,6 +56,8 @@ public class EmployeeServiceImpl implements EmployeeService{
         Employee existingEmployee = employeeRepository.findByUuid(UUID.fromString(uuid)).orElseThrow(() -> new RuntimeException("Employee not found"));
         return employeeDtoConversion(existingEmployee);
         } catch (Exception e) {
+            log.error("Erro,\n" + //
+                    "    \"uuid\": \"86130863-6c5c-4afe-995d-6accf89f5190\"r in getting specific employee --> ",e);
             return null;
         }
     }

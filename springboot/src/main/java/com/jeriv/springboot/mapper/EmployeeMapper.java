@@ -1,6 +1,7 @@
 package com.jeriv.springboot.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 import com.jeriv.springboot.dto.EmployeeDto;
@@ -13,5 +14,5 @@ public interface EmployeeMapper {
 
     EmployeeDto toEmployeeDto(Employee employee);
 
-    void updateEmployee(EmployeeDto employeeDto, @MappingTarget Employee employee);
+    Employee updateEmployee(EmployeeDto employeeDto, @MappingTarget Employee employee);
 }
