@@ -23,12 +23,6 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
-
-	    <!--JPA-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
@@ -55,8 +49,8 @@
 
 		<!-- Configured Database-->
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 
         <!-- For converting an Entity to Dto and vice-versa (mapper class)-->
@@ -71,7 +65,13 @@
 			<version>1.4.2.Final</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+
 		<!--Kafka-->
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>

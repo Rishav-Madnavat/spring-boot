@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jeriv.springboot.dto.EmployeeDto;
+import com.jeriv.springboot.dto.ResponseEmployeeDto;
 import com.jeriv.springboot.entities.Employee;
 import com.jeriv.springboot.entities.repository.EmployeeRepository;
 import com.jeriv.springboot.mapper.EmployeeMapper;
@@ -25,7 +26,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     private EmployeeRepository employeeRepository;
 
     @Override
-    public EmployeeDto addEmployee(EmployeeDto employeeDto) {
+    public ResponseEmployeeDto addEmployee(EmployeeDto employeeDto) {
 
         try {
             Employee employee = employeeRepository.save(employeeEntityConversion(employeeDto));
@@ -37,7 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public EmployeeDto updateEmployee(String uuid, EmployeeDto employeeDto) {
+    public ResponseEmployeeDto updateEmployee(String uuid, EmployeeDto employeeDto) {
 
         try {
           Employee existingEmployee = employeeRepository.findByUuid(UUID.fromString(uuid)).orElseThrow(() -> new RuntimeException("Employee not found"));
@@ -50,7 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public EmployeeDto getEmployee(String uuid) {
+    public ResponseEmployeeDto getEmployee(String uuid) {
 
         try {     
         Employee existingEmployee = employeeRepository.findByUuid(UUID.fromString(uuid)).orElseThrow(() -> new RuntimeException("Employee not found"));
@@ -63,7 +64,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public List<EmployeeDto> getAllEmployee() {
+    public List<ResponseEmployeeDto> getAllEmployee() {
         List<Employee> employees = employeeRepository.findAll();
         return employees.stream().map(this::employeeDtoConversion).collect(Collectors.toList());    
     }
@@ -81,7 +82,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         return employeeMapper.toEmployee(employeeDto);
     }
 
-    private EmployeeDto employeeDtoConversion(Employee employee){
+    private ResponseEmployeeDto employeeDtoConversion(Employee employee){
 
         EmployeeMapper employeeMapper = Mappers.getMapper(EmployeeMapper.class);
         return employeeMapper.toEmployeeDto(employee);

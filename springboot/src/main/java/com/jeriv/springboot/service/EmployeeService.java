@@ -3,16 +3,17 @@ package com.jeriv.springboot.service;
 import java.util.List;
 
 import com.jeriv.springboot.dto.EmployeeDto;
+import com.jeriv.springboot.dto.ResponseEmployeeDto;
 
 public interface EmployeeService {
     
-    EmployeeDto addEmployee(EmployeeDto employeeDto);
+    ResponseEmployeeDto addEmployee(EmployeeDto employeeDto);
 
-    EmployeeDto updateEmployee(String uuid, EmployeeDto employeeDto);
+    ResponseEmployeeDto updateEmployee(String uuid, EmployeeDto employeeDto);
 
-    EmployeeDto getEmployee(String uuid);
+    ResponseEmployeeDto getEmployee(String uuid);
     
-    List<EmployeeDto> getAllEmployee();
+    List<ResponseEmployeeDto> getAllEmployee();
 
     String deleteEmployee(String uuid);
 }
